@@ -64,7 +64,6 @@ namespace openrmf_msg_audit
                 try {
                     // print the message
                     logger.Info("New NATS subject: {0}", natsargs.Message.Subject);
-                    logger.Info("New NATS data: {0}",Encoding.UTF8.GetString(natsargs.Message.Data));
                     
                     // setup the MondoDB connection
                     Settings s = new Settings();
