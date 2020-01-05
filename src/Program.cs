@@ -89,7 +89,7 @@ namespace openrmf_msg_audit
             // is to simply pass the event in.  Messages will start
             // arriving immediately.
             logger.Info("setting up the OpenRMF new audit subscriptions");
-            IAsyncSubscription asyncNew = c.SubscribeAsync("openrmf.checklist.save.new", newAuditEvent);
+            IAsyncSubscription asyncNew = c.SubscribeAsync("openrmf.audit.>", newAuditEvent);
         }
     }
 }
