@@ -5,12 +5,12 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <RootNamespace>openrmf_msg_audit</RootNamespace>
     <ProjectGuid>{1dd3177b-8cf6-4767-b97d-5dcad00c6d64}</ProjectGuid>
-    <Version>0.11</Version>
+    <Version>0.13</Version>
     <InformationalVersion>This is a beta of the OpenRMF Tool Auditing API for tracking all auditable events from Cingulara</InformationalVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NATS.Client" Version="0.9.0" />
+    <PackageReference Include="NATS.Client" Version="0.10.0" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="mongodb.driver" Version="2.7.2" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="1.1.0" />
