@@ -1,4 +1,4 @@
-![.NET Core Master](https://github.com/Cingulara/openrmf-msg-audit/workflows/.NET%20Core%20Master/badge.svg?branch=master)
+![.NET Core Build and Test](https://github.com/Cingulara/openrmf-msg-audit/workflows/.NET%20Core%20Build%20and%20Test/badge.svg)
 
 # openrmf-msg-audit
 Messaging service to listen for and record all auditable actions across OpenRMF.
