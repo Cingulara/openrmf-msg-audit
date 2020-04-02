@@ -1,3 +1,5 @@
+![.NET Core Master](https://github.com/Cingulara/openrmf-msg-audit/workflows/.NET%20Core%20Master/badge.svg?branch=master)
+
 # openrmf-msg-audit
 Messaging service to listen for and record all auditable actions across OpenRMF.
 * openrmf.checklist.save.new from Upload
