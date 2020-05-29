@@ -2,10 +2,7 @@
 
 # openrmf-msg-audit
 Messaging service to listen for and record all auditable actions across OpenRMF.
-* openrmf.checklist.save.new from Upload
-* openrmf.checklist.save.update	from Upload
-* openrmf.checklist.delete from Save
-* openrmf.system.update.{id} from Save
+* openrmf.audit.> means any audit record we will read and save
 
 ## Running the NATS docker images
 * docker run --rm --name nats-main -p 4222:4222 -p 6222:6222 -p 8222:8222 nats:2.1.2-linux
