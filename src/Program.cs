@@ -67,8 +67,10 @@ namespace openrmf_msg_audit
                     
                     // setup the MondoDB connection
                     Settings s = new Settings();
-                    s.ConnectionString = Environment.GetEnvironmentVariable("MONGODBCONNECTION");
-                    s.Database = Environment.GetEnvironmentVariable("MONGODB");
+                    if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable("DBTYPE")) || Environment.GetEnvironmentVariable("DBTYPE").ToLower() == "mongo") {
+                        s.ConnectionString = Environment.GetEnvironmentVariable("DBCONNECTION");
+                        s.Database = Environment.GetEnvironmentVariable("DB");
+                    }
                     // setup the database repo for systems
                     AuditRepository _auditRepo = new AuditRepository(s);
                     Audit newAudit = JsonConvert.DeserializeObject<Audit>(Compression.DecompressString(Encoding.UTF8.GetString(natsargs.Message.Data)));
