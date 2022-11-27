@@ -27,17 +27,8 @@ namespace openrmf_msg_audit.Data {
         
         public Audit AddAudit(Audit item)
         {
-            try
-            {
                 _context.Audits.InsertOne(item);
                 return item;
-            }
-            catch (Exception ex)
-            {
-                // log or manage the exception
-                throw ex;
-            }
         }
-
     }
 }
