@@ -1,4 +1,4 @@
-VERSION ?= 1.10.01
+VERSION ?= 1.12.00
 NAME ?= "openrmf-msg-audit"
 AUTHOR ?= "Dale Bingham"
 NO_CACHE ?= true
