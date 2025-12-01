@@ -12,7 +12,7 @@ RUN dotnet build
 RUN dotnet publish --runtime linux-musl-x64 -c Release -o out --self-contained true
 
 # build runtime image
-FROM cingulara/openrmf-base:1.13.01
+FROM docker.io/cingulara/openrmf-base:1.14.01
 RUN apk update && apk upgrade
 
 RUN mkdir /app
@@ -29,4 +29,7 @@ USER 1001
 ENTRYPOINT ["./openrmf-msg-audit"]
 
 LABEL org.opencontainers.image.source https://github.com/Cingulara/openrmf-msg-audit
-LABEL maintainer="dale.bingham@cingulara.com"
+LABEL org.opencontainers.image.authors="dale.bingham@cingulara.com"
+LABEL org.opencontainers.image.description="This is the audit message client to capture published auditing messages and react accordingly for OpenRMF OSS"
+LABEL org.opencontainers.image.vendor="Cingulara LLC and Tutela LLC"
+LABEL org.opencontainers.image.title="OpenRMF OSS Auditing Client"
