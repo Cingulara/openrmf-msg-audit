@@ -28,7 +28,7 @@ RUN chown openrmfuser:openrmfgroup /app
 USER 1001
 ENTRYPOINT ["./openrmf-msg-audit"]
 
-LABEL org.opencontainers.image.source https://github.com/Cingulara/openrmf-msg-audit
+LABEL org.opencontainers.image.source=https://github.com/Cingulara/openrmf-msg-audit
 LABEL org.opencontainers.image.authors="dale.bingham@cingulara.com"
 LABEL org.opencontainers.image.description="This is the audit message client to capture published auditing messages and react accordingly for OpenRMF OSS"
 LABEL org.opencontainers.image.vendor="Cingulara LLC and Tutela LLC"
