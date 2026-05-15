@@ -1,29 +1,31 @@
 using Xunit;
 using openrmf_msg_audit.Models;
-using System;
 
 namespace tests.Models
 {
     public class SettingsTests
     {
         [Fact]
-        public void Test_NewSettingsIsValid()
+        public void Constructor_InitializesWithNullFields()
         {
-            Settings audset = new Settings();
-            Assert.True(audset != null);
-        }
-    
-        [Fact]
-        public void Test_SettingsWithDataIsValid()
-        {
-            Settings audset = new Settings();
-            audset.ConnectionString = "myConnection";
-            audset.Database = "user=x; database=x; password=x;";
+            var settings = new Settings();
 
-            // test things out
-            Assert.True(audset != null);
-            Assert.True (!string.IsNullOrEmpty(audset.ConnectionString));
-            Assert.True (!string.IsNullOrEmpty(audset.Database));
+            Assert.NotNull(settings);
+            Assert.Null(settings.ConnectionString);
+            Assert.Null(settings.Database);
+        }
+
+        [Fact]
+        public void Fields_RoundTripExpectedValues()
+        {
+            var settings = new Settings();
+            settings.ConnectionString = "mongodb://localhost:27017";
+            settings.Database = "openrmf_audit";
+
+            Assert.Equal("mongodb://localhost:27017", settings.ConnectionString);
+            Assert.Equal("openrmf_audit", settings.Database);
+            Assert.NotEqual("postgres://localhost", settings.ConnectionString);
+            Assert.NotEqual("wrong_db", settings.Database);
         }
     }
 }
