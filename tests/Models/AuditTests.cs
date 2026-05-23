@@ -7,37 +7,57 @@ namespace tests.Models
     public class AuditTests
     {
         [Fact]
-        public void Test_NewAuditIsValid()
+        public void Constructor_AssignsNonEmptyAuditId()
         {
-            Audit aud = new Audit();
-            Assert.True(aud != null);
-            Assert.True(aud.auditId != Guid.Empty);
-        }
-    
-        [Fact]
-        public void Test_AuditWithDataIsValid()
-        {
-            Audit aud = new Audit();
-            aud.program = "Save";
-            aud.created = DateTime.Now;
-            aud.action = "edit";
-            aud.userid = Guid.NewGuid().ToString();
-            aud.username = "my.username";
-            aud.fullname = "My F. Name";
-            aud.email = "dale.bingham@cingulara.com";
-            aud.url = "https://www.openrmf.io";
-            aud.message = "This is a test";
+            var audit = new Audit();
 
-            Assert.True(aud != null);
-            Assert.True(aud.auditId != Guid.Empty);
-            Assert.True(!string.IsNullOrEmpty(aud.program));
-            Assert.True(!string.IsNullOrEmpty(aud.action));
-            Assert.True(!string.IsNullOrEmpty(aud.userid));
-            Assert.True(!string.IsNullOrEmpty(aud.username));
-            Assert.True(!string.IsNullOrEmpty(aud.fullname));
-            Assert.True(!string.IsNullOrEmpty(aud.email));
-            Assert.True(!string.IsNullOrEmpty(aud.url));
-            Assert.True(!string.IsNullOrEmpty(aud.message));
+            Assert.NotNull(audit);
+            Assert.NotEqual(Guid.Empty, audit.auditId);
+            Assert.False(audit.auditId == Guid.Empty);
+        }
+
+        [Fact]
+        public void Properties_RoundTripExpectedValues()
+        {
+            var created = DateTime.UtcNow;
+            var audit = new Audit
+            {
+                program = "save",
+                created = created,
+                action = "edit",
+                userid = Guid.NewGuid().ToString(),
+                username = "my.username",
+                fullname = "My F Name",
+                email = "dale@example.com",
+                url = "https://www.openrmf.io",
+                message = "This is a test"
+            };
+
+            Assert.Equal("save", audit.program);
+            Assert.Equal(created, audit.created);
+            Assert.Equal("edit", audit.action);
+            Assert.False(string.IsNullOrWhiteSpace(audit.userid));
+            Assert.Equal("my.username", audit.username);
+            Assert.Equal("My F Name", audit.fullname);
+            Assert.Equal("dale@example.com", audit.email);
+            Assert.Equal("https://www.openrmf.io", audit.url);
+            Assert.Equal("This is a test", audit.message);
+            Assert.NotEqual("delete", audit.action);
+        }
+
+        [Fact]
+        public void DefaultStringProperties_AreNullUntilAssigned()
+        {
+            var audit = new Audit();
+
+            Assert.Null(audit.program);
+            Assert.Null(audit.action);
+            Assert.Null(audit.userid);
+            Assert.Null(audit.username);
+            Assert.Null(audit.fullname);
+            Assert.Null(audit.email);
+            Assert.Null(audit.url);
+            Assert.Null(audit.message);
         }
     }
 }

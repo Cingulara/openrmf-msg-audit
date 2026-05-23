@@ -1,4 +1,4 @@
-﻿// Copyright (c) Cingulara LLC 2020 and Tutela LLC 2020. All rights reserved.
+﻿// Copyright (c) Cingulara LLC 2025 and Tutela LLC 2025. All rights reserved.
 // Licensed under the GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 license. See LICENSE file in the project root for full license information.
 using System;
 using NATS.Client;
@@ -11,6 +11,8 @@ using openrmf_msg_audit.Data;
 using Newtonsoft.Json;
 
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.Serializers;
 
 namespace openrmf_msg_audit
 {
@@ -18,6 +20,9 @@ namespace openrmf_msg_audit
     {
         static void Main(string[] args)
         {
+            // Configure MongoDB GUID serialization for legacy compatibility
+            BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.CSharpLegacy));
+
             LogManager.Configuration = new XmlLoggingConfiguration($"{AppContext.BaseDirectory}nlog.config");
 
             var logger = LogManager.GetLogger("openrmf-msg-audit");
